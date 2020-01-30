@@ -15,9 +15,9 @@ def max_2_sum arr
   # YOUR CODE HERE
   if arr.size == 0
     return 0
-  elsif arr.size == 1 
+  elsif arr.size == 1
     return arr[0]
-  else 
+  else
     arr.sort!;
     max = arr[-1] + arr[-2]
     return max
@@ -26,13 +26,13 @@ end
 
 def sum_to_n? arr, n
   # YOUR CODE HERE
-hash = Hash.new 
+hash = Hash.new
   arr.each do |i|
     if hash.has_key?(n-i)
       return true
     else
       hash[i] = 1
-    end 
+    end
   end
   return false
 end
@@ -58,21 +58,24 @@ def starts_with_consonant? s
 
 end
 
+
 def binary_multiple_of_4? s
   # YOUR CODE HERE
-  if s.length == 0
-  	return false
+  if(s.length == 0)
+    return false
   end
-  if !s.count('01') == s.size
-  	return false
+  for i in 0..s.length - 1
+    if s[i] != '0' and s[i] != '1'
+      return false
+    end
   end
-  n = s.to_i(2)
-  if n%4 != 0
-  	return false
+  if s.to_i(2) % 4 != 0
+    return false
   end
-
   return true
 end
+
+
 
 # Part 3
 
@@ -82,8 +85,8 @@ class BookInStock
   attr_accessor :price
 
   def initialize(isbn,price)
-		if price <= 0 or isbn == ""? 
-			raise ArgumentError
+		if price <= 0 or isbn == ""
+         raise ArgumentError, "price cannot be negative."
 		end
 		@isbn = isbn
 		@price = price
@@ -91,6 +94,9 @@ class BookInStock
 
   def price_as_string
 		return "$#{'%.2f' %  @price}"
-	end		
-
+  end
 end
+
+
+
+
